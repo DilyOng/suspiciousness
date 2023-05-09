@@ -4,7 +4,7 @@ version = "0.0.0"
 description = "Quantifying tensions between datasets."
 authors = [{name="Adam Neil Ormondroyd", email="Adam.Ormondroyd@gmail.com"}]
 readme = "README.md"
-dependencies = ["numpy", "scipy", "anesthetic"]
+dependencies = ["numpy", "scipy", "matplotlib", "smplotlib", "anesthetic"]
 
 [project.urls]
 repository = "https://github.com/AdamOrmondroyd/suspiciousness"

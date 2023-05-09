@@ -1,6 +1,6 @@
 [project]
 name = "suspiciousness"
-version = "0.0.1"
+version = "0.0.2"
 description = "Quantifying tensions between datasets."
 authors = [{name="Adam Neil Ormondroyd", email="Adam.Ormondroyd@gmail.com"}]
 readme = "README.md"

@@ -4,7 +4,7 @@ from suspiciousness.core import samples
 
 
 @samples
-def plot_sigma8(a, b, ab, labels=("a", "b", "ab"), ax=None, x="omegam", y="sigma8"):
+def sigma8plot(a, b, ab, labels=("a", "b", "ab"), ax=None, x="omegam", y="sigma8"):
     if ax is None:
         _, ax = plt.subplots()
 
@@ -18,7 +18,7 @@ def plot_sigma8(a, b, ab, labels=("a", "b", "ab"), ax=None, x="omegam", y="sigma
 
 
 @samples
-def plot_corner(a, b, ab, axes, labels=("a", "b", "ab")):
+def cornerplot(a, b, ab, axes, labels=("a", "b", "ab")):
     for ns, label, alpha in zip((a, b, ab), labels, (0.5, 0.5, 0.9)):
         ns.plot_2d(axes, label=label, alpha=alpha)
     axes.iloc[1, 0].legend(loc=(3, 0.5))

@@ -26,23 +26,26 @@ def stats(func):
 
 
 @stats
-def logR(a, b, ab):
+def logR(a, b, ab, print=False):
     logR = ab.logZ - a.logZ - b.logZ
-    print(f"logR = {logR.mean()} ± {logR.std()}")
+    if print:
+        print(f"logR = {logR.mean()} ± {logR.std()}")
     return logR
 
 
 @stats
-def logS(a, b, ab):
+def logS(a, b, ab, print=False):
     logS = ab.logL_P - a.logL_P - b.logL_P
-    print(f"logS = {logS.mean()} ± {logS.std()}")
+    if print:
+        print(f"logS = {logS.mean()} ± {logS.std()}")
     return logS
 
 
 @stats
-def logI(a, b, ab):
+def logI(a, b, ab, print=False):
     logI = a.D_KL + b.D_KL - ab.D_KL
-    print(f"logI = {logI.mean()} ± {logI.std()}")
+    if print:
+        print(f"logI = {logI.mean()} ± {logI.std()}")
     return logI
 
 
@@ -52,8 +55,9 @@ def bayesian_d(a, b, ab):
 
 
 @stats
-def logp(a, b, ab):
+def logp(a, b, ab, print=False):
     d = bayesian_d(a, b, ab)
     logp = chi2.logsf(d-2*logS(a, b, ab), d)
-    print(f"logp = {logp.mean()} ± {logp.std()}")
+    if print:
+        print(f"logp = {logp.mean()} ± {logp.std()}")
     return logp

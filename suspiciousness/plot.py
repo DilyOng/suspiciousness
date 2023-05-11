@@ -9,7 +9,7 @@ def sigma8plot(*nestedsamples, ax=None, x="omegam", y="sigma8", plot_kwargs):
         _, ax = plt.subplots()
 
     for ns in nestedsamples:
-        kwargs = plot_kwargs.pop(ns.label, {})
+        kwargs = plot_kwargs.get(ns.label, {})
         ns.plot.kde_2d(x, y, ax=ax, **kwargs)
 
     ax.set(xlabel=nestedsamples[0].get_label(x),
@@ -26,7 +26,7 @@ def cornerplot(axes, *nestedsamples, prior=False, plot_kwargs):
                                              color="blue", label="prior")
 
     for ns in nestedsamples:
-        kwargs = plot_kwargs.pop(ns.label, {})
+        kwargs = plot_kwargs.get(ns.label, {})
         ns.plot_2d(axes, **kwargs)
     axes.iloc[1, 0].legend(loc=(3, 0.5))
 

@@ -38,3 +38,12 @@ def logp(a, b, ab, print=False):
     if print:
         print(f"logp = {logp.mean()} ± {logp.std()}")
     return logp
+
+
+@stats
+def p(a, b, ab, print=False):
+    d = bayesian_d(a, b, ab)
+    p = chi2.sf(d-2*logS(a, b, ab), d)
+    if print:
+        print(f"p = {p.mean()} ± {p.std()}")
+    return p

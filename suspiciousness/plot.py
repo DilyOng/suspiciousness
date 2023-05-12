@@ -4,7 +4,22 @@ from suspiciousness.utils import samples
 
 
 @samples
-def sigma8plot(*nestedsamples, ax=None, x="omegam", y="sigma8", plot_kwargs, **kwargs):
+def sigma8plot(*nestedsamples, ax=None, x="omegam", y="sigma8",
+               plot_kwargs, **kwargs):
+    """
+    Create kde from *nestedsamples[x], *nestedsamples[y].
+
+    *nestedsamples: anesthetic.NestedSamples
+
+    ax: axis to plot on.
+
+    x, y: str. axes to plot.
+
+    plot_kwargs: dict. plot_args[nestedsamples.label]
+                 are the kwargs for that plot.
+
+    **kwargs: kwargs to pass to every plot.
+    """
     if ax is None:
         _, ax = plt.subplots()
 
@@ -21,6 +36,20 @@ def sigma8plot(*nestedsamples, ax=None, x="omegam", y="sigma8", plot_kwargs, **k
 
 @samples
 def cornerplot(axes, *nestedsamples, prior=False, plot_kwargs, **kwargs):
+    """
+    Create corner plot from *nestedsamples.
+
+    axes: Pandas array of axes (output of anesthetic.make_2d_axes)
+
+    *nestedsamples: anesthetic.NestedSamples
+
+    prior: bool. Use nestedsamples[0].set_beta(0) to show the prior too.
+
+    plot_kwargs: dict. plot_args[nestedsamples.label]
+                 are the kwargs for that plot.
+
+    **kwargs: kwargs to pass to every plot.
+    """
     if prior:
         nestedsamples[0].set_beta(0).plot_2d(axes, alpha=0.25,
                                              color="blue", label="prior")

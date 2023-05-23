@@ -25,6 +25,8 @@ def sigma8plot(*nestedsamples, ax=None, x="omegam", y="sigma8",
 
     for ns in nestedsamples:
         ns_kwargs = plot_kwargs.get(ns.label, {})
+        if 'label' not in ns_kwargs:
+            ns_kwargs['label'] = ns.label
         ns.plot.kde_2d(x, y, ax=ax, **ns_kwargs, **kwargs)
 
     ax.set(xlabel=nestedsamples[0].get_label(x),

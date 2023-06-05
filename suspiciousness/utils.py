@@ -3,7 +3,7 @@ import anesthetic as ac
 
 
 def read_cobaya_chains(chains, name):
-    return ac.reach_chains(f"{chains}/{name}/{name}_polychord_raw/{name}")
+    return ac.read_chains(f"{chains}/{name}/{name}_polychord_raw/{name}")
 
 
 def samples(func):

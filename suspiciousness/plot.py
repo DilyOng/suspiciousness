@@ -57,6 +57,9 @@ def cornerplot(axes, *nestedsamples, prior=False, plot_kwargs, **kwargs):
                                              color="blue", label="prior")
 
     for ns in nestedsamples:
+        if 'tau' in ns:
+            # required due to Cobaya update
+            ns.set_label('tau', '$\tau$')
         ns_kwargs = plot_kwargs.get(ns.label, {})
         ns.plot_2d(axes, **ns_kwargs, **kwargs)
     axes.iloc[1, 0].legend(loc=(3, 0.5))

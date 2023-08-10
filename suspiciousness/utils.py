@@ -1,9 +1,14 @@
 from functools import wraps
+import numpy as np
 import anesthetic as ac
 
 
 def read_cobaya_chains(chains, name):
-    return ac.read_chains(f"{chains}/{name}/{name}_polychord_raw/{name}")
+    ns = ac.read_chains(f"{chains}/{name}/{name}_polychord_raw/{name}")
+    if 'S8' not in ns and 'sigma8' in ns and 'omegam' in ns:
+        ns['S8'] = ns.sigma8 * np.sqrt(ns.omegam / 0.3)
+        ns.set_label('S8', '$S_8$')
+    return ns
 
 
 def samples(func):
